@@ -25,7 +25,7 @@
 <!--     <script src="js/submissions.min.js"></script> -->
     
     <!-- Mobile browsers do not support HTML5 form validation, this lib provides client side validation. -->
-    <script src="js/libs/jquery.validate-1.13.1.js"></script>
+<!--     <script src="js/libs/jquery.validate-1.13.1.js"></script> -->
 <!--     <script src="js/libs/jquery.validate-1.13.1.min.js"></script> -->
 <!--     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.js"></script> -->
     <script src="js/libs/additional-methods-1.13.1.js"></script>
@@ -38,10 +38,7 @@
     <!-- This is the main list.  It is just names. -->
     <header class="buzzwords-head">
         <a id="nav-toggle" href="#"><span></span></a>
-        <div class="buzzwords-head-logo">
-            <h1>Buzzwords</h1>
-        </div>
-        <form id="filter-form-list-page" class="buzzwords-head-search filter-form">
+       <form id="filter-form-list-page" class="buzzwords-head-search filter-form">
             <!-- span class="filter-span">
                 <input id="filter-input-list-page" type="text" placeholder="Search">
                 <span id="clear_input">X</span>
@@ -64,10 +61,10 @@
         <article class="buzzwords-main-content buzzwords-mobile-list-view">
             <div id="input-section">
 	            <form id="url-form" class="input-section" >
-	            	<span>URL:<input id="url-input" type="submit"><button id="button-add-url" type="submit" value="Add" ></button></span>
+	            	<span>URL:<input id="url-input" type="text"><button id="button-add-url" type="submit" value="Add" ></button></span>
 	            </form>
 	            <form id="filter-form" class="input-section">
-	            	Filtered Out Words<input id="filter-input" type="submit"><button id="button-add-filter" type="submit" value="Add" ></button>
+	            	<span>Filtered Out Words<input id="filter-input" type="text"><button id="button-add-filter" type="submit" value="Add" ></button></span>
 	            </form>
             </div>
             <div id="buzzwords-results">

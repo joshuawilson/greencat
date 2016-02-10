@@ -97,7 +97,7 @@ $(document).ready(function() {
                  *   complete, the callback is fired immediately.)
                  */
                 var jqxhr = $.ajax({
-                    url: restEndpoint,
+                    url: "rest/websites",
                     contentType: "application/json",
 //                    dataType: "json",
                     data: buzzwordData,

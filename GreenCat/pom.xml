@@ -7,6 +7,7 @@
   <version>1.0.0-SNAPSHOT</version>
   <packaging>war</packaging>
   <properties>
+    <version.wildfly.maven.plugin>1.0.2.Final</version.wildfly.maven.plugin>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -85,6 +86,21 @@
         <configuration>
           <failOnMissingWebXml>false</failOnMissingWebXml>
         </configuration>
+      </plugin>
+      <!-- The WildFly plug-in deploys the WAR to a local JBoss EAP container -->
+      <!-- To use, run: mvn package wildfly:deploy -->
+      <plugin>
+          <groupId>org.wildfly.plugins</groupId>
+          <artifactId>wildfly-maven-plugin</artifactId>
+          <version>${version.wildfly.maven.plugin}</version>
+		 <configuration>
+		     <executeCommands>
+		         <batch>false</batch>
+		         <scripts>
+		             <script>target/scripts/${cli.file}</script>
+		         </scripts>
+		     </executeCommands>
+		 </configuration>
       </plugin>
     </plugins>
   </build>
