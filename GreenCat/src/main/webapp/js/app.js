@@ -21,7 +21,7 @@ BUZZWORDS.namespace('BUZZWORDS.app.buildBuzzwordList');
 BUZZWORDS.namespace('BUZZWORDS.app.restEndpoint');
 BUZZWORDS.namespace('BUZZWORDS.app.filterList');
 
-BUZZWORDS.app.restEndpoint = 'rest/buzzwords';
+BUZZWORDS.app.restEndpoint = 'rest/words';
 
 /**
  * It is recommended to bind to this event instead of DOM ready() because this will work regardless of whether 
@@ -98,29 +98,18 @@ $(document).ready (function(mainEvent) {
             buzzwordDetailList = "";
         
         // The data from the AJAX call is not sorted alphabetically, this will fix that.
-        buzzwords.sort(function(a,b){
-              var aName = a.firstName.toLowerCase() + a.lastName.toLowerCase();
-              var bName = b.firstName.toLowerCase() + b.lastName.toLowerCase(); 
-              return ((aName < bName) ? -1 : ((aName > bName) ? 1 : 0));
-        });
+//        buzzwords.sort(function(a,b){
+//              var aName = a.firstName.toLowerCase() + a.lastName.toLowerCase();
+//              var bName = b.firstName.toLowerCase() + b.lastName.toLowerCase(); 
+//              return ((aName < bName) ? -1 : ((aName > bName) ? 1 : 0));
+//        });
         
         // Pull the info out of the Data returned from the AJAX request and create the HTML to be placed on the page.
         $.each(buzzwords, function(index, buzzword) {
             // Create the HTML for the List only view.
             buzzwordList = buzzwordList.concat(
-                "<li id=list-buzzword-ID-" + buzzword.id.toString() + " class=buzzwords-list-item >" +
-                    "<a href='buzzwords-edit.html?id=" + buzzword.id.toString() + "' >" + buzzword.firstName.toString() + " " + buzzword.lastName.toString() + "</a>" +
-                "</li>");
-            // Create the HTML for the Detailed List view.
-            buzzwordDetailList = buzzwordDetailList.concat(
-                "<li id=detail-buzzword-ID-" + buzzword.id.toString() + " class=buzzwords-detail-list-item >" +
-                    "<a href='buzzwords-edit.html?id=" + buzzword.id.toString() + "' >" + buzzword.firstName.toString() + " " + buzzword.lastName.toString() +
-                    "<div class='detialedList'>" +
-                        "<p><strong>" + buzzword.email.toString() + "</strong></p>" +
-                        "<p>" + buzzword.phoneNumber.toString() + "</p>" +
-                        "<p>" + buzzword.birthDate.toString() + "</p>" +
-                    "</div>"+ "</a>"  +
-                 "</li>");
+                "<li id=list-buzzword-ID-" + buzzword.id.toString() + " class=buzzwords-list-item >" + buzzword.count.toString() + " " + buzzword.word.toString() + "</li>");
+            
         });
         
         // Check if it is the List view or Detailed view and add the buzzwords to the list.

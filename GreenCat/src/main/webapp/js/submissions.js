@@ -105,6 +105,7 @@ $(document).ready(function() {
                 }).done(function(data, textStatus, jqXHR) {
                     console.log(getCurrentTime() + " [js/submissions.js] (submitCreate) - ajax done");
                     
+                    BUZZWORDS.app.getBuzzwords();
                     // Reset this flag when the form passes validation. 
                     //BUZZWORDS.validation.formEmail = null;
                     
