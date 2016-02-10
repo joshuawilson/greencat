@@ -1,6 +1,9 @@
 package org.GreenCat.rest;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -20,7 +23,13 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
+
+import org.GreenCat.logic.WordStatistics;
 import org.GreenCat.model.Websites;
+import org.GreenCat.model.Words;
+import org.GreenCat.util.HTMLReader;
+import org.GreenCat.logic.*;
+import org.GreenCat.rest.*;
 
 /**
  * 
@@ -33,13 +42,34 @@ public class WebsitesEndpoint {
 
 	@POST
 	@Consumes("application/json")
-	public Response create(Websites entity) {
-		em.persist(entity);
+	public Response create(@QueryParam("url") String url) {
+		HTMLReader reader = new HTMLReader();
+		String content = reader.readHTMLAsText(url);
+		WordStatistics wstats = new WordStatistics();
+		Stats allStats = wstats.getWordCounts(content, Collections.EMPTY_LIST);
+		
+		Websites website = new Websites();
+		website.setUrl(url);
+		em.persist(website);
+		
+		for(String w : allStats.wordCounts.keySet()){
+			Words word = new Words();
+			word.setFiltered(false);
+			word.setWord(w);
+			word.setCount(Long.valueOf(allStats.wordCounts.get(w)));
+			Set<Websites> websitesId = word.getWebsitesId();
+			websitesId.add(website);
+			word.setWebsitesId(websitesId);
+			
+			em.persist(word);
+		}
+		
 		return Response.created(
 				UriBuilder.fromResource(WebsitesEndpoint.class)
-						.path(String.valueOf(entity.getId())).build()).build();
+						.path(String.valueOf(website.getId())).build()).build();
 	}
-
+	
+	
 	@DELETE
 	@Path("/{id:[0-9][0-9]*}")
 	public Response deleteById(@PathParam("id") Long id) {
