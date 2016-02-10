@@ -11,7 +11,9 @@ import org.GreenCat.model.Websites;
 import java.util.Set;
 import java.util.HashSet;
 import javax.persistence.ManyToMany;
+import javax.xml.bind.annotation.XmlRootElement;
 @Entity
+@XmlRootElement
 public class Words implements Serializable {
 
 	@Id
