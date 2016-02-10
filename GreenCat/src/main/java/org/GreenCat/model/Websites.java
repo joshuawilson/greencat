@@ -12,6 +12,8 @@ import java.util.HashSet;
 import org.GreenCat.model.Words;
 import javax.persistence.ManyToMany;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.validation.constraints.Pattern;
+
 @Entity
 @XmlRootElement
 public class Websites implements Serializable {
@@ -28,6 +30,7 @@ public class Websites implements Serializable {
 	private Set<Words> wordsId = new HashSet<Words>();
 
 	@Column
+	@Pattern(regexp = "^(http://|https://)?(www.)?([a-zA-Z0-9]+).[a-zA-Z0-9]*.[a-z]{3}.?([a-z]+)?$")
 	private String url;
 
 	public Long getId() {
