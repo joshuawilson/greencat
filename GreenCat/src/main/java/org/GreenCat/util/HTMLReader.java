@@ -12,10 +12,15 @@ package org.GreenCat.util;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLConnection;
 
+import org.apache.commons.io.IOUtils;
+//import org.jsoup.Jsoup;
 import org.jsoup.Jsoup;
 
 
@@ -28,47 +33,62 @@ public class HTMLReader {
 	private static final String EMPTY = "";
 	
 	/**
-	 * Reads a Web Page into an HTML String by a given URL
+	 * Reads a Plain Text from Web Page HTML into a String by a given URL
+	 * 
 	 * 
 	 * @param url - URL of web page to read
-	 * @return String HTML returned by a web server
+	 * @return String Pain Text from an HTML page returned by a web server
 	 */
     public static String readHTML(String url) {
-    	StringBuffer sb = new StringBuffer(1000);
         URL anURL;
 		try {
 			anURL = new URL(url);
 		} catch (MalformedURLException e) {
-			e.printStackTrace();
 			return EMPTY;
 		}
 
-		BufferedReader in = null;
-        String inputLine;
-        try {
-			in = new BufferedReader(
-			new InputStreamReader(anURL.openStream()));
+		URLConnection con = null;
+		try {
+	        con = anURL.openConnection();
+	        if (con instanceof HttpURLConnection) {
+	        	HttpURLConnection httpCon = (HttpURLConnection)con;
+	        	int status = httpCon.getResponseCode();
+	        	String message = httpCon.getResponseMessage();
+//	        	System.out.println("Response code: " + status + ", Error: " + message);
 
-			while ((inputLine = in.readLine()) != null) {
-				sb.append(inputLine);
-			}
+	        	if ((status >= 300) && (status < 400)) {
+//	        		for (String f : httpCon.getHeaderFields().keySet()) {
+//	        			System.out.println("HF: " + f + ": Value = " + httpCon.getHeaderField(f));
+//	        		}
+	        		String location = httpCon.getHeaderField("Location");
+	        		if (location != null && !location.equals(anURL)) {
+	        			return readHTMLAsText(location);
+	        		}
+	        	}
+	        	if (status != 200) {
+	        		return "";
+	        	}
+	        }
+
+	        InputStream in = con.getInputStream();
+	        String encoding = con.getContentEncoding();
+	        encoding = encoding == null ? "UTF-8" : encoding;
+//	        System.out.println("Encoding is: " + encoding);
+
+	        
+	        String body = IOUtils.toString(in, encoding);
+	        return body;
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return EMPTY;
-		} finally {
-			if (in != null) {
-				try {
-					in.close();
-				} catch (IOException e) {
-					// Ignore
-				}
-			}
-		}
-        return sb.toString();
+		} 
     }
- 
+        
+        
 	/**
 	 * Reads a Plain Text from Web Page HTML into a String by a given URL
+	 * 
 	 * 
 	 * @param url - URL of web page to read
 	 * @return String Pain Text from an HTML page returned by a web server
@@ -81,4 +101,27 @@ public class HTMLReader {
 	    	return EMPTY;
 		}
     }
+  	
+    
+	public static void main(String[] args) {
+
+//		String[] newargs = {"http://www.oracle.com", "http://www.redhat.com"};
+//		String[] newargs = {"http://www.elcaro.moc", "ht", "http://www.oracle.com/some-non-existing-page.html"};
+//		String[] newargs = {"http://www.oracle.com/some-non-existing-page.html"};
+		String[] newargs = {"http://www.yandex.ru"};
+				
+		
+
+		for (String arg: newargs) {
+			System.out.println("URL: " + arg);
+			try {
+				System.out.println(
+				HTMLReader.readHTMLAsText(arg)
+				);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
 }
