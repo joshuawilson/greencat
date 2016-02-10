@@ -1,1 +1,118 @@
-<meta http-equiv="refresh" content="0;url=./app.html" />
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Green Cat</title>
+    <link rel="stylesheet" href="css/app-style.css" type="text/css" media="all" />
+    <link href="styles/bootstrap.css" rel="stylesheet" media="screen">
+    <link href="styles/bootstrap-theme.css" rel="stylesheet" media="screen">
+    <link href="styles/main.css" rel="stylesheet" media="screen">
+
+    <script src="js/namespace.js"></script>
+    <script src="js/util.js"></script>
+    <script src="js/formSetup.js"></script>
+    <script src="js/app.js"></script>
+<!--     <script src="js/edit.js"></script> -->
+    <script src="js/validation.js"></script>
+    <script src="js/submissions.js"></script>
+<!--     <script src="js/namespace.min.js"></script> -->
+<!--     <script src="js/util.min.js"></script> -->
+<!--     <script src="js/formSetup.min.js"></script> -->
+<!--     <script src="js/app.min.js"></script> -->
+<!--     <script src="js/edit.min.js"></script> -->
+<!--     <script src="js/validation.min.js"></script> -->
+<!--     <script src="js/submissions.min.js"></script> -->
+    
+    <!-- Mobile browsers do not support HTML5 form validation, this lib provides client side validation. -->
+    <script src="js/libs/jquery.validate-1.13.1.js"></script>
+<!--     <script src="js/libs/jquery.validate-1.13.1.min.js"></script> -->
+<!--     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.js"></script> -->
+    <script src="js/libs/additional-methods-1.13.1.js"></script>
+<!--     <script src="js/libs/additional-methods-1.13.1.min.js"></script> -->
+<!--     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/additional-methods.js"></script> -->
+
+</head>
+<body>
+<div class="page">
+    <!-- This is the main list.  It is just names. -->
+    <header class="buzzwords-head">
+        <a id="nav-toggle" href="#"><span></span></a>
+        <div class="buzzwords-head-logo">
+            <h1>Buzzwords</h1>
+        </div>
+        <form id="filter-form-list-page" class="buzzwords-head-search filter-form">
+            <!-- span class="filter-span">
+                <input id="filter-input-list-page" type="text" placeholder="Search">
+                <span id="clear_input">X</span>
+            </span-->
+            <span>
+            	<span id="login-display-name">Please Login</span>
+            	<button id="login-button">Login</button>
+            </span>
+        </form>
+    </header>
+    
+    <section role="main" class="buzzwords-main">
+        <!-- nav id="buzzwords-list-page-menu-panel" class="buzzwords-main-nav buzzwords-mobile-list-view">
+            <ul id="buzzwords-list-page-menu-panel-listview">
+                <li><a href="buzzwords-add.html">Add URL</a></li>
+                <li><a href="buzzwords-details.html">Detailed List</a></li>
+                <li><a href="buzzwords-about.html">About</a></li>
+            </ul>
+        </nav-->
+        <article class="buzzwords-main-content buzzwords-mobile-list-view">
+            <div id="input-section">
+	            <form id="url-form" class="input-section" >
+	            	<span>URL:<input id="url-input" type="submit"><button id="button-add-url" type="submit" value="Add" ></button></span>
+	            </form>
+	            <form id="filter-form" class="input-section">
+	            	Filtered Out Words<input id="filter-input" type="submit"><button id="button-add-filter" type="submit" value="Add" ></button>
+	            </form>
+            </div>
+            <div id="buzzwords-results">
+	            <ul id="buzzwords-count-listview" class="buzzwords-list">
+	                <!-- The list of buzzwords gets inserted here.  -->
+	            </ul>
+	            <ul id="buzzwords-freq-listview" class="buzzwords-list">
+	                <!-- The list of buzzwords gets inserted here.  -->
+	            </ul>
+	            <ul id="buzzwords-density-listview" class="buzzwords-list">
+	                <!-- The list of buzzwords gets inserted here.  -->
+	            </ul>
+            </div>
+        </article>
+    </section>
+    
+    <footer class="buzzwords-foot">
+        <h4><a href=http://developers.redhat.com/>Red Hat Developers</a></h4>
+    </footer>
+</div>
+    
+    
+    <script src="scripts/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="scripts/vendor/jquery-2.1.1.js"></script>
+    <script src="scripts/vendor/bootstrap.js"></script>
+    <script src="scripts/vendor/angular.js"></script>
+    <script src="scripts/vendor/angular-route.js"></script>
+    <script src="scripts/vendor/angular-resource.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/offcanvas.js"></script>
+    <script src="scripts/directives/datepicker.js"></script>
+    <script src="scripts/directives/timepicker.js"></script>
+    <script src="scripts/directives/datetimepicker.js"></script>
+    <script src="scripts/filters/startFromFilter.js"></script>
+    <script src="scripts/filters/genericSearchFilter.js"></script>
+    <script src="scripts/services/flash.js"></script>
+    <script src="scripts/services/locationParser.js"></script>
+    <script src="scripts/controllers/flashController.js"></script>
+    <script src="scripts/services/WebsitesFactory.js"></script>
+    <script src="scripts/controllers/newWebsitesController.js"></script>
+    <script src="scripts/controllers/searchWebsitesController.js"></script>
+    <script src="scripts/controllers/editWebsitesController.js"></script>
+    <script src="scripts/services/WordsFactory.js"></script>
+    <script src="scripts/controllers/newWordsController.js"></script>
+    <script src="scripts/controllers/searchWordsController.js"></script>
+    <script src="scripts/controllers/editWordsController.js"></script>
+</body>
+</html>
