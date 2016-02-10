@@ -168,8 +168,8 @@ $(document).ready (function(mainEvent) {
     });
 
     // Fetches the initial Buzzword data.
-    BUZZWORDS.app.getBuzzwords();
-    BUZZWORDS.app.filterList();
+//    BUZZWORDS.app.getBuzzwords();
+//    BUZZWORDS.app.filterList();
 
     console.log(getCurrentTime() + " [js/app.js] (document) - end");
 });

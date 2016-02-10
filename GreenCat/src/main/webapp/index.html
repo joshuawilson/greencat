@@ -8,30 +8,27 @@
     <link href="styles/bootstrap.css" rel="stylesheet" media="screen">
     <link href="styles/bootstrap-theme.css" rel="stylesheet" media="screen">
     <link href="styles/main.css" rel="stylesheet" media="screen">
+    
+    <script src="js/libs/jquery-2.0.3.js"></script>
+
+    <link rel="stylesheet" href="css/app-style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/validator.css" type="text/css" media="all" />
+<!--     <link rel="stylesheet" href="css/app-style.min.css" type="text/css" media="all" /> -->
+<!--     <link rel="stylesheet" href="css/validator.min.css" type="text/css" media="all" /> -->
+    
+    <!-- This is the CSS for the International Telephone Input plugin. -->
+    <link rel="stylesheet" href="css/intlTelInput-4.0.1.css">
 
     <script src="js/namespace.js"></script>
     <script src="js/util.js"></script>
     <script src="js/formSetup.js"></script>
     <script src="js/app.js"></script>
-<!--     <script src="js/edit.js"></script> -->
     <script src="js/validation.js"></script>
     <script src="js/submissions.js"></script>
-<!--     <script src="js/namespace.min.js"></script> -->
-<!--     <script src="js/util.min.js"></script> -->
-<!--     <script src="js/formSetup.min.js"></script> -->
-<!--     <script src="js/app.min.js"></script> -->
-<!--     <script src="js/edit.min.js"></script> -->
-<!--     <script src="js/validation.min.js"></script> -->
-<!--     <script src="js/submissions.min.js"></script> -->
     
     <!-- Mobile browsers do not support HTML5 form validation, this lib provides client side validation. -->
-    <script src="js/libs/jquery-2.0.3.js"></script>
     <script src="js/libs/jquery.validate-1.13.1.js"></script>
-<!--     <script src="js/libs/jquery.validate-1.13.1.min.js"></script> -->
-<!--     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.js"></script> -->
     <script src="js/libs/additional-methods-1.13.1.js"></script>
-<!--     <script src="js/libs/additional-methods-1.13.1.min.js"></script> -->
-<!--     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/additional-methods.js"></script> -->
 
 </head>
 <body>
@@ -62,10 +59,10 @@
         <article class="buzzwords-main-content buzzwords-mobile-list-view">
             <div id="input-section">
 	            <form id="url-form" class="input-section" >
-	            	<span>URL:<input id="url-input" type="text"><button id="button-add-url" type="submit" value="Add" ></button></span>
+	            	<span>URL:<input id="url-input" type="text"><button id="button-add-url" type="submit" value="Add" >Add</button></span>
 	            </form>
 	            <form id="filter-form" class="input-section">
-	            	<span>Filtered Out Words<input id="filter-input" type="text"><button id="button-add-filter" type="submit" value="Add" ></button></span>
+	            	<span>Filtered Out Words<input id="filter-input" type="text"><button id="button-add-filter" type="submit" value="Add" >Add</button></span>
 	            </form>
             </div>
             <div id="buzzwords-results">
@@ -88,29 +85,29 @@
 </div>
     
     
-    <script src="scripts/vendor/modernizr-2.8.3.min.js"></script>
+<!--     <script src="scripts/vendor/modernizr-2.8.3.min.js"></script> -->
 <!--     <script src="scripts/vendor/jquery-2.1.1.js"></script> -->
-    <script src="scripts/vendor/bootstrap.js"></script>
-    <script src="scripts/vendor/angular.js"></script>
-    <script src="scripts/vendor/angular-route.js"></script>
-    <script src="scripts/vendor/angular-resource.js"></script>
-    <script src="scripts/app.js"></script>
-    <script src="scripts/offcanvas.js"></script>
-    <script src="scripts/directives/datepicker.js"></script>
-    <script src="scripts/directives/timepicker.js"></script>
-    <script src="scripts/directives/datetimepicker.js"></script>
-    <script src="scripts/filters/startFromFilter.js"></script>
-    <script src="scripts/filters/genericSearchFilter.js"></script>
-    <script src="scripts/services/flash.js"></script>
-    <script src="scripts/services/locationParser.js"></script>
-    <script src="scripts/controllers/flashController.js"></script>
-    <script src="scripts/services/WebsitesFactory.js"></script>
-    <script src="scripts/controllers/newWebsitesController.js"></script>
-    <script src="scripts/controllers/searchWebsitesController.js"></script>
-    <script src="scripts/controllers/editWebsitesController.js"></script>
-    <script src="scripts/services/WordsFactory.js"></script>
-    <script src="scripts/controllers/newWordsController.js"></script>
-    <script src="scripts/controllers/searchWordsController.js"></script>
-    <script src="scripts/controllers/editWordsController.js"></script>
+<!--     <script src="scripts/vendor/bootstrap.js"></script> -->
+<!--     <script src="scripts/vendor/angular.js"></script> -->
+<!--     <script src="scripts/vendor/angular-route.js"></script> -->
+<!--     <script src="scripts/vendor/angular-resource.js"></script> -->
+<!--     <script src="scripts/app.js"></script> -->
+<!--     <script src="scripts/offcanvas.js"></script> -->
+<!--     <script src="scripts/directives/datepicker.js"></script> -->
+<!--     <script src="scripts/directives/timepicker.js"></script> -->
+<!--     <script src="scripts/directives/datetimepicker.js"></script> -->
+<!--     <script src="scripts/filters/startFromFilter.js"></script> -->
+<!--     <script src="scripts/filters/genericSearchFilter.js"></script> -->
+<!--     <script src="scripts/services/flash.js"></script> -->
+<!--     <script src="scripts/services/locationParser.js"></script> -->
+<!--     <script src="scripts/controllers/flashController.js"></script> -->
+<!--     <script src="scripts/services/WebsitesFactory.js"></script> -->
+<!--     <script src="scripts/controllers/newWebsitesController.js"></script> -->
+<!--     <script src="scripts/controllers/searchWebsitesController.js"></script> -->
+<!--     <script src="scripts/controllers/editWebsitesController.js"></script> -->
+<!--     <script src="scripts/services/WordsFactory.js"></script> -->
+<!--     <script src="scripts/controllers/newWordsController.js"></script> -->
+<!--     <script src="scripts/controllers/searchWordsController.js"></script> -->
+<!--     <script src="scripts/controllers/editWordsController.js"></script> -->
 </body>
 </html>
