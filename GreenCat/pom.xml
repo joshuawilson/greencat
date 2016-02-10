@@ -71,12 +71,10 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
-  	 	<groupId>GreenCat</groupId>
-    	<artifactId>GreenCat</artifactId>
+  	 	<groupId>org.jsoup</groupId>
+    	<artifactId>jsoup</artifactId>
   	  	<version>1.8.3</version>
-   		<scope>system</scope>
-	   	<systemPath>${project.basedir}/jsoup-1.8.3.jar</systemPath>
-  </dependency>
+    </dependency>
   </dependencies>
   <build>
     <finalName>GreenCat</finalName>
