@@ -42,15 +42,13 @@ public class WebsitesEndpoint {
 
 	@POST
 	@Consumes("application/json")
-	public Response create(@QueryParam("url") String url) {
+	public Response create(Websites websites) {
 		HTMLReader reader = new HTMLReader();
-		String content = reader.readHTMLAsText(url);
+		String content = reader.readHTMLAsText(websites.getUrl());
 		WordStatistics wstats = new WordStatistics();
 		Stats allStats = wstats.getWordCounts(content, Collections.EMPTY_LIST);
 		
-		Websites website = new Websites();
-		website.setUrl(url);
-		em.persist(website);
+		em.persist(websites);
 		
 		for(String w : allStats.wordCounts.keySet()){
 			Words word = new Words();
@@ -58,7 +56,7 @@ public class WebsitesEndpoint {
 			word.setWord(w);
 			word.setCount(Long.valueOf(allStats.wordCounts.get(w)));
 			Set<Websites> websitesId = word.getWebsitesId();
-			websitesId.add(website);
+			websitesId.add(websites);
 			word.setWebsitesId(websitesId);
 			
 			em.persist(word);
@@ -66,7 +64,7 @@ public class WebsitesEndpoint {
 		
 		return Response.created(
 				UriBuilder.fromResource(WebsitesEndpoint.class)
-						.path(String.valueOf(website.getId())).build()).build();
+						.path(String.valueOf(websites.getId())).build()).build();
 	}
 	
 	
