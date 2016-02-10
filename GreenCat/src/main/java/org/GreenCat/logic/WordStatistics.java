@@ -10,9 +10,6 @@ public class WordStatistics {
 	{
 		Stats stats = new Stats();
 		stats.wordCounts = new HashMap<String, Integer>();
-		//Pattern pattern = Pattern.compile("\\w+");
-		//Pattern pattern = Pattern.compile("(\\P{M}\\p{M}*)+");
-		//Pattern pattern = Pattern.compile("\\X+");
 		Pattern pattern = Pattern.compile("\\p{L}+");
 		Matcher matcher = pattern.matcher(document.toLowerCase());
 		while (matcher.find())
